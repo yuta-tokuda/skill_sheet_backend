@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: skill_sheet_backend
+  password: password
+  host: db
+
+development:
+  <<: *default
+  database: skill_sheet_backend_development
+
+test:
+  <<: *default
+  database: skill_sheet_backend_test
+
+production:
+  <<: *default
+  database: skill_sheet_backend_production
+  username: skill_sheet_backend
+  password: <%= ENV['DATABASE_PASSWORD'] %>
